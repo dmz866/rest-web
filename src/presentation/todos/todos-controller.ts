@@ -1,8 +1,6 @@
-import { error } from "console";
 import { Request, Response } from "express";
-import { json } from "stream/consumers";
 
-const todos = [
+let todos = [
     {
         id: 1, text: 'Shi',
     },
@@ -95,7 +93,8 @@ export class TodosController {
             return;
         }
 
-        todos.splice(todos.indexOf(todo), 1);
+        //todos.splice(todos.indexOf(todo), 1);
+        todos = todos.filter(t => t.id != id);
 
         res.json('Todo deleted!');
     }
